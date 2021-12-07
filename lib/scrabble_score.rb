@@ -1,15 +1,21 @@
 require('pry')
 
 
-
 class ScrabbleScore
-  def initialize(words)
-    @words = words
+  def initialize(words_or_path)
+    if (File.exist?(words_or_path))
+      file=File.open(words_or_path)
+      data = file.read
+      file.close
+      @words=data
+    else
+      @words = words_or_path
+    end
   end
+  
   def words
     @words
   end
-
   def get_score
     big_score=0
     big_arr=@words.split(" ")
@@ -42,10 +48,3 @@ class ScrabbleScore
     big_score
   end
 end
-
-file = File.open('./../moby10b.txt')
-data = file.read
-file.close
-test = ScrabbleScore.new(data)
-puts test.get_score
-

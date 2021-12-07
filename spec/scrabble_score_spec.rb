@@ -8,9 +8,8 @@ describe("ScrabbleScore#get_score") do
   word_test_4 = ScrabbleScore.new("aei123")
   word_test_5 = ScrabbleScore.new("giraffe")
   word_test_6 = ScrabbleScore.new("i like dogs")
-  # it("should return a for variable word_test_1") do
-  #   expect(word_test_1.word).to(eq("a"))
-  # end
+  word_test_7 = ScrabbleScore.new("./moby10b.txt")
+  
   it("should return score of 1 for all 1-point letters") do
     expect(word_test_1.get_score).to(eq(1))
   end
@@ -25,6 +24,9 @@ describe("ScrabbleScore#get_score") do
   end
   it("should return score of  for 'i like dogs'") do
     expect(word_test_6.get_score).to(eq(15))
+  end
+  it("should return score of a lot for moby dick file path") do
+    expect(word_test_7.get_score).to(eq(1604064))
   end
 end
 
